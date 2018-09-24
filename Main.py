@@ -2,8 +2,8 @@ import numpy as np
 import pylab
 from matplotlib import pyplot as plt
 
-dist_path2 = 'test'
-dist_path = 'E:\_Code\Lab1\position_osc.txt'
+# dist_path2 = 'test'
+dist_path = 'position_osc.txt'
 
 time_list = []
 dist_list = []
@@ -29,6 +29,8 @@ for line in dist_file:
 # # plt.show()
 
 
+# WITH DAMPING
+
 m = 0.2
 k = 16.63
 
@@ -36,7 +38,7 @@ time_generated = []
 distance_generated = []
 velocity_generated = []
 delta_t_too_big = 0.01
-delta_t = 0.0001
+delta_t = 0.00001
 curr_time = 0
 y_0 = 2.0985
 y_1 = y_0
@@ -47,16 +49,18 @@ omega_0 = 9.1193
 energy_generated = []
 E = 0
 coef_damping = 1
+
+
 while curr_time < 50:
     time_generated.append(curr_time)
     distance_generated.append(y_1)
     velocity_generated.append(v_1)
     y_1 = y_0 + delta_t * v_0
-    v_1 = v_0 - delta_t * omega_0 * omega_0*y_0
-    if v_1 < 0:
-        v_1 += v_0 * delta_t * coef_damping
-    else:
-        v_1 -= v_0 * delta_t * coef_damping
+    v_1 = v_0 - delta_t * omega_0 * omega_0*y_1
+    # if v_1 < 0:
+    #     v_1 += v_0 * delta_t * coef_damping
+    # else:
+    #     v_1 -= v_0 * delta_t * coef_damping
     v_0 = v_1
     y_0 = y_1
     E = (m * v_1 * v_1 + k * y_1 * y_1) / 2
@@ -69,6 +73,7 @@ print(distance_generated)
 fig, ax = plt.subplots()
 ax.plot(time_generated, distance_generated)
 ax.plot(time_generated, velocity_generated)
+ax.plot(distance_generated, velocity_generated)
 
 #ax.plot(distance_generated, energy_generated)
 ax.plot(time_generated, energy_generated)
