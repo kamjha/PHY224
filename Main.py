@@ -38,7 +38,7 @@ time_generated = []
 distance_generated = []
 velocity_generated = []
 delta_t_too_big = 0.01
-delta_t = 0.00001
+delta_t = 0.01
 curr_time = 0
 y_0 = 2.0985
 y_1 = y_0
@@ -51,7 +51,7 @@ E = 0
 coef_damping = 1
 
 
-while curr_time < 50:
+while curr_time < 10:
     time_generated.append(curr_time)
     distance_generated.append(y_1)
     velocity_generated.append(v_1)
@@ -67,21 +67,21 @@ while curr_time < 50:
     energy_generated.append(E)
     curr_time += delta_t
 
-print(time_generated)
-print(distance_generated)
+# print(time_generated)
+# print(distance_generated)
 
 fig, ax = plt.subplots()
 ax.plot(time_generated, distance_generated)
-ax.plot(time_generated, velocity_generated)
-ax.plot(distance_generated, velocity_generated)
+# ax.plot(time_generated, velocity_generated)
+# ax.plot(distance_generated, velocity_generated)
 
 #ax.plot(distance_generated, energy_generated)
-ax.plot(time_generated, energy_generated)
+# ax.plot(time_generated, energy_generated)
 ax.set(xlabel='Time (s)', ylabel='Distance (cm)',
        title='Distance vs. Time')
 ax.grid()
 
-fig.savefig("test2.png")
+fig.savefig("DistanceVsTime_Damped.png")
 
 plt.show()
 
