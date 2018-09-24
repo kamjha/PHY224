@@ -48,21 +48,15 @@ period = 10.0
 omega_0 = 9.1193
 energy_generated = []
 E = 0
-coef_damping = 1
+coef_damping = 0.1
 
 
 while curr_time < 10:
     time_generated.append(curr_time)
     distance_generated.append(y_1)
     velocity_generated.append(v_1)
-    y_1 = y_0 + delta_t * v_0
-    v_1 = v_0 - delta_t * omega_0 * omega_0*y_1
-    # if v_1 < 0:
-    #     v_1 += v_0 * delta_t * coef_damping
-    # else:
-    #     v_1 -= v_0 * delta_t * coef_damping
-    v_0 = v_1
-    y_0 = y_1
+    v_1 = v_1 + delta_t * (-1 * (omega_0 ** 2) * y_1 - coef_damping * v_1)
+    y_1 = y_1 + delta_t * v_1
     E = (m * v_1 * v_1 + k * y_1 * y_1) / 2
     energy_generated.append(E)
     curr_time += delta_t
