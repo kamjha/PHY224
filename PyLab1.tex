@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{multicol}
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{caption}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\usepackage{geometry}
+\usepackage{amsmath}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+bottom=30mm
+}
+
+\usepackage{times} 
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Title for Pylab 1\\ PHY 224} % Title
+
+\author{Kamal Jha, Hanchun Wang} % Author name
+
+\date{\today} % Date for the report
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+
+
+\begin{abstract}
+	In this experiment, we collect the data from oscillation of a mass-spring system and using algorithms to simulate the oscillation numerically on Python by using the measured data. bulaaalala 
+\end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 
+%----------------------------------------------------------------------------------------
+
+
+%\begin{multicols}{2}
+\section{Theoretical Analysis}
+\subsection{Ideal mass-spring system}
+Consider a perfect massless linear string which is stretched in its elastic limit without frictions. By Hooke's Law, the force that the spring gives to the object is described as 
+\[{F_{spring}} =  - k(x - {x_0})\tag{1}\]
+where $x, x_0$ represents the current and the free length of the spring separately. When the object is tied under the spring, the current length of the spring is now $x_1$. Notice that $x$ is also the downward vertical position of the object. When the system stays in stasis, by the equilibrium of the object, we have
+\[mg - k({x_1} - {x_0}) = 0\tag{2}\]
+By Newton Second Law, we have 
+\[m\frac{{{d^2}x}}{{d{t^2}}} = mg - k(x - {x_0})\tag{3}\]
+Now set $y = x - x_1$, where $y$ represents the downward distance between the current position and the equilibrium position. Replace $x$ in (3) with $y$, we get
+\[m\frac{{{d^2}x}}{{d{t^2}}} =  - ky + [mg - k({x_1} - {x_0})]\tag{4}\]
+According to (2), the part in the square bracket is $0$. Therefore, we can get an ODE
+\[\frac{{{d^2}y}}{{d{t^2}}} + \frac{k}{m}y = 0\tag{5}\]
+Let $\Omega_0=\sqrt{\frac{k}{m}}$. Solve (5) we get
+\[y = A\sin ({\Omega _0}t + {\varphi _0})\tag{6}\]
+where $A$ is the amplitude and $\psi_0$ is the initial phase. Through $T = 2\pi /{\Omega _0}$
+\[k = \frac{{4{\pi ^2}m}}{{{T^2}}}\tag{7}\]
+
+\subsection{Mass-spring system with air friction}
+Involve with the air friction which is a fluid friction, we have to determine the Reynold number $Re$.
+\[{\mathop{\rm Re}\nolimits}  = \frac{{\rho vl}}{\eta }\tag{8}\]
+If the flow is laminar, the Raynold number takes small value $(Re \leq 2300)$ and the drag coefficient is inversely proportional to the velocity. Where
+\[\overrightarrow {{F_d}}  =  - \gamma \vec v\]
+where $\gamma$ is the damping coefficient. We can update (5) as
+\[\frac{{{d^2}y}}{{d{t^2}}} + \gamma \frac{{dy}}{{dt}} + {\Omega _0}^2y = 0\tag{9}\]
+The solution for ODE (9) is 
+\[y = A_0{e^{ - \gamma t}}\sin ({\Omega _0}t + {\varphi _0})\tag{10}\]
+where $A_0$ is the initial amplitude. Also, we can get the damping expression of amplitude, where $A$ is the current amplitude
+\[A = {A_0}{e^{ - \gamma t}}\tag{11}\]
+
+\subsection{Energy of mass-spring system}
+For mass-spring system, the energy is represented as
+\[{E_{tot}} = K(\dot y) + U\tag{12}\]
+where $K(\dot y) = \frac{mv^2}{2}$ is the kinetic energy, $U = \frac{{k{(x-x_0)^2}}}{2}-mg(x-h)$ is the potential energy. Notice here we choose the potential zero $h$ by using $y = x - x_1$
+\[U(y) = \frac{{k{y^2}}}{2} + y[k({x_1} - {x_0}) - mg] + \frac{{k{{({x_1} - {x_0})}^2}}}{2} - mg({x_0} - h)\tag{13}\]
+again the part in the square bracket is 0, set the zero potential position $h = {x_0} - \frac{{k{{({x_1} - {x_0})}^2}}}{{2mg}}$, then we can get equation (12) as
+\[{E_{tot}} = K(\dot y) + U(y) = \frac{{m{{\dot y}^2} + k{y^2}}}{2}\tag{14}\]
+Furthermore, we can obtain the relationship between the amplitude $A$ and the energy $E_{tot}$ as
+\[E = k{A^2}/2\tag{15}\]
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Experiments}
+\subsection{Instruments}
+\begin{center}
+\begin{tabular}{c|c}
+
+     & Precision   \\ \hline
+ruler & $10^{-3}m$    \\ \hline
+tape ruler & $10^{-3}m$  \\ \hline
+stopwatch & $10^{-1}s$\\ \hline
+electronic scale & $10^{-1}g$ \\ \hline
+motion sensor & $ $ \\
+\end{tabular}
+\captionof{table}{Instruments parameters}
+\end{center}
+
+\subsection{Object properties}
+By using the electronic scale, the mass of the object $m_1$ and the combined mass of the object and the disk $m_2$ are obtained. By using the ruler, the diameter of the disk $D$ is obtained. 
+
+\subsection{Measure the period}
+\subsection{Measure the period - with the disk attached}
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Analysis}
+\subsection{Data Processing}
+
+\subsection{Calculation}
+\subsubsection{k}
+\subsubsection{$\gamma$}
+\subsubsection{energy}
+\subsubsection{Graphs}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Results and Conclusions}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+
+\section{Discussion of Experimental Uncertainty}
+\subsection{Types of Uncertainty}
+\begin{description}
+\item[Roundness]
+Since we assume the hoops we use are perfect. The defect of the roundness will cause the distribution of mass is not uniform. Hence the moment of inertia will have a deviation from the estimate value. However, this uncertainty is a systematic error.
+
+\item[Measure of size]
+The measurement of size by using ruler and tape ruler will have a random uncertainty $\Delta R=\pm0.05cm$.
+
+\item[Measure of period]
+The measurement of period by using stopwatch will have a random uncertainty which is caused by the lag of pressing the button. Since each time we measure, we need to press the button at both the start and end to determine the time interval. Since we test 10 period at once, thus we will have a $\Delta T=\pm0.1s/10=0.01s$.
+
+\end{description}
+\subsection{Calculations on Uncertainty}
+\section{Appendix}
+\end{document}
